@@ -14,13 +14,13 @@
 
 char	*get_next_line(int fd)
 {
-	static char	stash[1024][BUFFER_SIZE + 1] = {0};
+	static char	stash[MAX_FD][BUFFER_SIZE + 1] = {0};
 	char		*next_line;
 	size_t		n;
 
 	n = 0;
-	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
-		return (ft_bzero(stash[fd], BUFFER_SIZE + 1), NULL);
+	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
+		return (NULL);
 	if (ft_strchr(stash[fd], '\n'))
 		return (get_empty_line(stash[fd], &n));
 	next_line = ft_strdup(stash[fd]);

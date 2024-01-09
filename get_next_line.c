@@ -20,7 +20,7 @@ char	*get_next_line(int fd)
 
 	n = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (ft_bzero(stash, BUFFER_SIZE + 1), NULL);
+		return (NULL);
 	if (ft_strchr(stash, '\n'))
 		return (get_empty_line(stash, &n));
 	next_line = ft_strdup(stash);
